@@ -2,7 +2,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
+$color-primario: #28d4ff;
+$fuente: 'Bebas Neue', cursive;
+$color-fondo: #07114d;
+$color-base: #a3d3e9;
+$boton-padding: 7px 20px;
 
+
+// interpolacion 
+$tema: oscuro; 
+$colores: (
+    azul-claro: #28d4ff, 
+    azul-oscuro: #07114d
+);
+@each $nombre, $valor in $colores{
+    .btn-#{$nombre}{
+        background-color: $valor;
+        color: white;
+        border: 1px solid $valor;
+        padding: $boton-padding;
+        border-radius: 0.25rem;
+        display: inline-block;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        &:hover{
+            background-color: color.adjust($valor, $lightness:-10%);
+        }
+    }
+    .btn-contorno-#{$nombre}{
+        background-color: transparent;
+        color: $valor;
+        border: 1px solid $valor;
+        padding: $boton-padding;
+        border-radius: 0.25rem;
+        display: inline-block;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        &:hover{
+            background-color: $valor;
+            color: white;
+        }
+    }
+}
 
 * {
     margin: 0;
